@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css">
+		
+		<title>Management System</title>
+	</head>
+	<body>
+		<div id="container">
+		<div class="head">
+		<h2>Product management system</h2>
+		</div>
+
+		<div class="inputs" >
+			<input type="text" placeholder="title" id="title">
+
+			<div class="category">
+			<input type="number" placeholder="price" id="price">
+			<input type="number" placeholder="taxes" id="taxes">
+			<input type="number" placeholder="ads" id="ads">
+			<input type="number" placeholder="discount" id="discount">
+			 <small id="total">1234</small>
+			</div>
+			<input type="number" placeholder="count" id="count"/>
+			<input type="text" placeholder="category" id="category1"/>
+			<button id="submit">Create</button>
+		</div>
+			 <div class="outputs">
+			<div class="searchBox">
+				<input type="text" placeholder="search" id="search"/>
+				<div class="searchButtons">
+				<button id="searchTitle">Search By Title</button>
+				<button id="searchCategory">Search By Category</button>
+			</div>
+			 </div>
+       </div> 
+	  
+      <table id="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Taxes</th>
+				<th>Ads</th>
+				<th>Discount</th>
+				<th>Total</th>
+				<th>Category</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody id="tableBody">
+			<tr>
+				<td>1</td>
+				<td>Product 1</td>
+				<td>100</td>
+				<td>10</td>
+				<td>5</td>
+				<td>2</td>
+				<td>113</td>
+				<td>Category 1</td>
+				<td><button id="update">Update</button></td>
+				<td><button id="delete">Delete</button></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Product 2</td>
+				<td>130</td>
+				<td>40</td>
+				<td>7</td>
+				<td>1</td>
+				<td>157</td>
+				<td>Category 2</td>
+				<td><button class="update">Update</button></td>
+				<td><button class="delete">Delete</button></td>
+			</tr>
+		</tbody>
+	</table>
+       </div> 
+	</div>
+	<script src="script.js"></script>
+	 </body>
+</html>
