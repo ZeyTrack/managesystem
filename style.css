@@ -35,7 +35,7 @@ input:focus{
     transform: scale(1.05);
 }
 #total{
-    background-color: #5a6d58;
+    background-color: #a00d02;
     margin-right: 0px;
     padding: 5px 2px;
     border-radius: 5px;
@@ -85,4 +85,7 @@ table{
 }
 td, th{
     padding: 7px;
+}
+#deleteAll{
+    margin: 20px 0px;
 }

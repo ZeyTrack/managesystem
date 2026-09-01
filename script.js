@@ -35,15 +35,17 @@ if(localStorage.product != null){
 
 submit.onclick = function(){
         let newpro = {
-        title:title.value,
+        title:title.value.toLowerCase(),
         price:price.value,
         taxes:taxes.value,
         ads:ads.value,
         discount:discount.value,
         total:total.innerHTML,
         count:count.value,
-        category:category.value,
+        category:category.value.toLowerCase(),
     }
+    if(title.value != '' && price.value != ''
+        && category.value != '' && newpro.count < 100 ){
     if(mood === "create"){ 
     if(newpro.count > 1){
     for(let i = 0; i<count.value; i++){
@@ -58,11 +60,12 @@ submit.onclick = function(){
     count.style.display = "block";
 
 }
-
+cleardata()
+}
     //save localstorage
     localStorage.setItem("product", JSON.stringify(datapro));
    // console.log(datapro);
-cleardata()
+
 showdata()
 }
 
@@ -87,7 +90,7 @@ function showdata(){
         table += ` 
          
         <tr>
-                <td>${i}</td>
+                <td>${i+1}</td>
 				<td>${datapro[i].title}</td>
 				<td>${datapro[i].price}</td>
 				<td>${datapro[i].taxes}</td>
@@ -145,26 +148,28 @@ function update(i){
 }  
 
 //search
-let searchmood = "";
-let search = document.getElementById("search");
+let searchmood = "title";
 function clicksearch(id){
-      if(id == "searchTitle"){
-        searchmood = "title";
-        search.placeholder = "Search By Title"; 
+    let search = document.getElementById('search');
+      if(id == 'searchTitle'){
+        searchmood = 'title'; 
 }
 else{
-    searchmood = "category";
-    search.placeholder = "Search By Category";
+    searchmood = 'category';
 }
-console.log(searchmood);
+    search.placeholder = "Search By " + searchmood;
+
 search.focus();
+search.value = '';
+showdata()
 }
 
 function searchdata(value){
     let table = '';
+    for(let i = 0; i<datapro.length;i++){
     if(searchmood == "title"){
-for(let i = 0; i<datapro.length;i++){
-    if(datapro[i].title.includes(value)){ 
+
+    if(datapro[i].title.includes(value.toLowerCase())){ 
        table += ` 
          
         <tr>
@@ -175,16 +180,38 @@ for(let i = 0; i<datapro.length;i++){
 				<td>${datapro[i].ads}</td>
 				<td>${datapro[i].discount}</td>
 				<td>${datapro[i].total}</td>
-			<!-- <td>${datapro[i].count}</td> -->
+			 <!-- <td>${datapro[i].count}</td> --> 
 				<td>${datapro[i].category}</td>
 				<td><button onclick="update(${i})" class="update">Update</button></td>
 				<td><button onclick="deletedata(${i})" class="delete">Delete</button></td>
 			</tr>
     `       
 }
-document.getElementById('tableBody').innerHTML = table;
+
+}  else{
+     
+    if(datapro[i].category.includes(value.toLowerCase())){ 
+       table += ` 
+         
+        <tr>
+                <td>${i}</td>
+				<td>${datapro[i].title}</td>
+				<td>${datapro[i].price}</td>
+				<td>${datapro[i].taxes}</td>
+				<td>${datapro[i].ads}</td>
+				<td>${datapro[i].discount}</td>
+				<td>${datapro[i].total}</td>
+			<!-- <td>${datapro[i].count}</td> --> 
+				<td>${datapro[i].category}</td>
+				<td><button onclick="update(${i})" class="update">Update</button></td>
+				<td><button onclick="deletedata(${i})" class="delete">Delete</button></td>
+			</tr>
+    `       
 }
-}  
+
+}
+}
+document.getElementById('tableBody').innerHTML = table;
 
 }
 
